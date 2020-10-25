@@ -17,11 +17,4 @@ function getCountry($ip)
 {
 }
 
-/**
- * disconnects active db session 
- */
-function dbDisconnect()
-{
-}
-
 ?>
