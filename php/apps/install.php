@@ -49,11 +49,11 @@ HTTP 200 for successful user login.
 /*
 ******PSEUDOCODE******
 
-1) Get all params and store them into variables
-2) Validate them 
-3) Check if the app exists in the system
-4) Store the user data in the database
-5) Return user ID back to the app
+- Get all params and store them into variables
+- Validate them 
+- Check if the app exists in the system
+- Store the user data in the database
+- Return user ID back to the app
 
 */
 
