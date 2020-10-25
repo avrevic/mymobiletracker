@@ -1,3 +1,5 @@
 - Show how new swagger yaml file can be easily applied and tested with a script
 - Show .htaccess
 - Show how to check error logs
+- Show how to disable autocommit and what it is used for
+- Make symlinks for php folder - reorganize project differently
