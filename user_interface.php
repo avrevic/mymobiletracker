@@ -2,7 +2,7 @@
 
 function CreateAPIKey( )
 {
-    echo "This function generates API key from user's parameters";
+    /* This function generates API key from user's parameters" */
 }
 
 ?>
