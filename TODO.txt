@@ -1,2 +1,3 @@
 - Show how new swagger yaml file can be easily applied and tested with a script
 - Show .htaccess
+- Show how to check error logs
