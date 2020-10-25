@@ -1,6 +1,6 @@
 <?php 
 
-if($_POST['token'] != 'mycustomtoken') {
+if($_GET['token'] != 'mycustomtoken') {
     http_response_code(401);
     die;
 }
