@@ -7,6 +7,8 @@
 
 [Project milestones](https://docs.google.com/document/d/1o3a052NFrj-ru_kXEEinrEElBZEoUWZ_AYonW_rk_OY/edit)
 
+[REST API Swagger](http://64.225.126.152:81)
+
 It is an app to track the following features from a user
  * App installs
  * App events
