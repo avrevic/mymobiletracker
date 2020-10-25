@@ -1,4 +1,11 @@
-# mymobiletracker
+# Project introduction
+
+### Detailed specification documentation
+[Project specification URL](https://docs.google.com/document/d/16-QYaV33y1liuI7Cxnw4RZHvuWNkJe-X4UO_KIQzLzc/edit?usp=sharing)
+
+[API specification URL](https://docs.google.com/document/d/1rHXAFX9E5kpaxNJuVhGCxNMBYfm_8FvygXkBhWOfvng/edit)
+
+[Project milestones](https://docs.google.com/document/d/1o3a052NFrj-ru_kXEEinrEElBZEoUWZ_AYonW_rk_OY/edit)
 
 It is an app to track the following features from a user
  * App installs
