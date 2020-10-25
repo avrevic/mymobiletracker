@@ -1,5 +1,18 @@
+1:1 session
+
 - Show how new swagger yaml file can be easily applied and tested with a script
 - Show .htaccess
 - Show how to check error logs
 - Show how to disable autocommit and what it is used for
 - Make symlinks for php folder - reorganize project differently
+- Show commenting standards 
+- Create domain
+- Show PWD hashing
+- Show bootstrap file
+- Show telegram bots api
+
+Armin TODO 
+
+- Fix swagger issue - with CORS policy 
+- Fix .htaccess .php extension redirect to endpoints without extension
+- Set up mailer for 
