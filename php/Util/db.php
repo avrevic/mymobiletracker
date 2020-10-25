@@ -16,8 +16,10 @@ function dbConnect()
 
 /**
  * disconnects active db session 
+ * 
+ * @param db Active db instance
  */
-function dbDisconnect()
+function dbDisconnect($db)
 {
 }
 
