@@ -140,3 +140,41 @@ Add the following line at the end of a file
 ```bash
 0 */2 * * * docker exec -t postgres-instance pg_dumpall -c -U postgres > ~/backups/dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
 ```
+
+# API
+
+## Documentation setup - Swagger
+
+Get the swagger UI Docker image
+
+```bash
+docker pull swaggerapi/swagger-ui
+```
+
+Create a swagger yaml local file that will be run from your Docker instance
+
+```bash
+touch ~/swagger.yaml
+```
+
+Populate the yaml file with your API content
+
+Run the docker image
+
+```bash
+docker run -d --name swagger-instance  -p 80:8080 -e SWAGGER_JSON=~/swagger.yaml -v /bar:/foo swaggerapi/swagger-ui
+```
+
+After that we need to set up a crontab script to reboot swagger container if the server reboots.
+
+To open crontab use:
+
+```bash
+crontab -e
+```
+
+Then add the following line:
+
+```bash
+@reboot docker swagger-instance
+```
