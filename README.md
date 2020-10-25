@@ -36,7 +36,7 @@ Using the app event service, we are able to track users' behavior toward some of
 
 # ER Model
 
-![ER](https://raw.githubusercontent.com/avrevic/mymobiletracker/527304841cda013a99409378555b9cedd2ae149f/er-diagram.png)
+![ER](https://raw.githubusercontent.com/avrevic/mymobiletracker/master/er-diagram.png)
 
 # Server setup
 
