@@ -33,3 +33,7 @@ Using the app event service, we are able to track users' behavior toward some of
 
 ### Automated Push Notification
  Using One Signal API, the app's backend send push notifactions after creating a specific query to users upon specific events they make.
+
+# ER Model
+
+![ER](https://raw.githubusercontent.com/avrevic/mymobiletracker/527304841cda013a99409378555b9cedd2ae149f/er-diagram.png)
