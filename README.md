@@ -164,7 +164,7 @@ Populate the yaml file with your API content
 Run the docker image
 
 ```bash
-docker run -d --name swagger-instance  -p 80:8080 -e SWAGGER_JSON=~/swagger.yaml -v /bar:/foo swaggerapi/swagger-ui
+docker run -d --name swagger-instance  -p 80:8080 -e API_URL=http://64.225.126.152/swagger.yaml SWAGGER_JSON=~/swagger.yaml -v /bar:/foo swaggerapi/swagger-ui
 ```
 
 After that we need to set up a crontab script to reboot swagger container if the server reboots.
@@ -180,3 +180,40 @@ Then add the following line:
 ```bash
 @reboot docker swagger-instance
 ```
+
+# Apache setup
+
+TODO add more explanation later
+
+```bash
+a2enmod rewrite
+systemctl restart apache2
+sudo nano /etc/apache2/sites-available/000-default.conf
+<Directory /var/www/html>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Require all granted
+    </Directory>
+systemctl restart apache2
+```
+
+
+docker run -d --name swagger-instance  -p 81:8080 -e SWAGGER_JSON=/var/www/html/swagger.yaml -v /bar:/foo swaggerapi/swagger-ui
+
+
+
+
+docker run -d --name swagger-instance  -p 81:8080 -e SWAGGER_JSON=/var/www/html/swagger.yaml -v /bar:/foo swaggerapi/swagger-ui
+
+
+docker run -d --name swagger-instance  -p 81:8080 -e API_URL=http://64.225.126.152/swagger.yaml -v /bar:/foo swaggerapi/swagger-ui
+
+
+vi 
+
+SWAGGER_JSON=/foo/swagger.json -v /bar:/foo swaggerapi/swagger-ui
+
+
+
+
+docker run -d --name swagger-instance  -p 81:8080 -e SWAGGER_JSON=/foo/swagger.json -v /bar:/foo swaggerapi/swagger-ui
