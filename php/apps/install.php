@@ -8,8 +8,9 @@
  */ 
 
 require_once('../Util/bootstrap.php');
-
-header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');  
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+//header('Content-Type: application/json');
 $data = array("Test" => "Armin");
 echo json_encode($data);
 
