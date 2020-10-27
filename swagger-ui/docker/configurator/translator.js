@@ -3,7 +3,7 @@ const configSchema = require("./variables")
 
 const defaultBaseConfig = {
   url: {
-    value: "data.json",
+    value: "swagger.yaml",
     schema: {
       type: "string",
       base: true
