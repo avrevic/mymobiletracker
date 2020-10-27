@@ -10,6 +10,7 @@
 - Show PWD hashing
 - Show bootstrap file
 - Show telegram bots api
+- Show VS Code extensions
 
 Armin TODO 
 
