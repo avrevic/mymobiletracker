@@ -1,18 +1,20 @@
 <?php
 
 /**
- * Short description for class
+ * Short description for file
  *
- * Long description for class (if any)...
+ * Long description for file (if any)...
  *
  */ 
 
 require_once('../Util/bootstrap.php');
+
 header('Access-Control-Allow-Origin: *');  
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 //header('Content-Type: application/json');
-$data = array("Test" => "Armin");
+$data = array("Test" => "Armin2");
 echo json_encode($data);
+error_log("This is my test");
 
 /*
 Description: This endpoint is called when the user installs the app on their device. 

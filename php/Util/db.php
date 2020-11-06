@@ -9,6 +9,8 @@
 
 /**
  * Returns database handler that can be used to execute queries
+ * 
+ * @return Returns open database connection instance
  */
 function dbConnect()
 {
