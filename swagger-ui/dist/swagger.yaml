@@ -32,6 +32,10 @@ paths:
       summary: "Register a new app install"
       description: ""
       operationId: "appInstall"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
       parameters:
       - in: "body"
         name: "body"
@@ -430,10 +434,29 @@ definitions:
     required:
     - "app_id"
     - "device"
+    - "os"
+    - "app_version"
+    - "device_name"
+    - "region"
     properties:
       app_id:
         type: "string"
         example: "com.mytestapp.io"
+      device:
+        type: "string"
+        example: "iPhone 8"
+      os: 
+        type: "string"
+        example: "iOS 14"
+      app_version:
+        type: "string"
+        example: "1.0.1"
+      device_name:
+        type: "string"
+        example: "Armin's iPhone"
+      region:
+        type: "string"
+        example: "KR"
     xml:
       name: "Install"
   ApiResponse:
