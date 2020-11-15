@@ -12,5 +12,47 @@
 
 Armin TODO 
 
-- Fix .htaccess .php extension redirect to endpoints without extension
+- 
 - Set up mailer for 
+
+
+
+
+
+
+sudo apt-get -y install php-curl
+sudo systemctl restart apache2
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get -y install certbot python-certbot-apache
+sudo certbot --apache
+
+
+
+<?php
+
+$host        = "host = 127.0.0.1";
+$port        = "port = 543";
+$dbname      = "dbname = clicktracker";
+$credentials = "user = trackeradmin password=mypwd";
+$serverAddr = "ip";
+
+header('Access-Control-Allow-Origin: *');
+
+$db = pg_connect("$host $port $dbname $credentials");
+if (!$db) {
+        error_log('Unable to open the database');
+        header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+        exit();
+}
+?>
+
+
+    $ret = pg_query_params($db, $sql, array($randomString));
+
+    $foundKey = false;
+
+    while ($category = pg_fetch_assoc($ret)) {
+        $foundKey = true;
+    }

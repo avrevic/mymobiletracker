@@ -1,5 +1,38 @@
 <?php
 
+require_once('/var/www/db.php');
+
+$appId = $_GET['app_id'];
+error_log(">>> appId: " . $appId);
+
+/*
+ App Url  |  App Name    |      App Id       | Type  |     Domain
+----------+--------------+-------------------+-------+----------------
+ https:// | My First app | com.myfirstapp.id | iOS   | myfirstapp.com
+ */
+
+$sql = <<<EOF
+	SELECT * 
+	FROM "Apps"
+	WHERE "App Id" = $1;
+EOF;
+
+$appExists = false; 
+
+$ret = pg_query_params($db, $sql, array($appId));
+
+while ($app = pg_fetch_assoc($ret)) {
+	$appExists = true;
+}
+
+if (!$appExists) {
+	error_log("App id does not exist");
+	http_response_code(404);
+	die;
+} 
+
+
+
 /**
  * Short description for file
  *
@@ -7,6 +40,7 @@
  *
  */ 
 
+ /*
 require_once('../Util/bootstrap.php');
 
 header('Access-Control-Allow-Origin: *');  
@@ -15,7 +49,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 $data = array("Test" => "Armin2");
 echo json_encode($data);
 error_log("This is my test");
-
+*/
 /*
 Description: This endpoint is called when the user installs the app on their device. 
 There are 5 extra parameters that can be used for some extra information about the app that we want to collect. 
