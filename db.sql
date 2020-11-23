@@ -5,11 +5,11 @@ CREATE TABLE "Third_Party_Login" (
   PRIMARY KEY ("3rd Party User Id")
 );
 
-CREATE TABLE "User" (
+CREATE TABLE "users" (
   "Ip Address" Varchar(50),
   "Store Country" Varchar(50),
-  "Visit Time" datetime,
-  "User Unique ID" Integer,
+  "Visit Time" timestamp,
+  "User Unique ID" SERIAL,
   "Phone Number" Integer,
   "Email" Varchar(50),
   "Passwords" Varchar(50),
