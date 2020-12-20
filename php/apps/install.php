@@ -12,6 +12,7 @@
 */
 header('Access-Control-Allow-Origin: *');
 require_once('/var/www/db.php');
+require_once('/var/www/html/php/bots/install.php');
 
 $json = file_get_contents('php://input');
 // Converts it into a PHP object
@@ -55,17 +56,25 @@ function InstallUserInfo($data, $db)
 	$logintype = $data['logintype'];
 
 	$sql = <<<EOF
-		INSERT INTO users VALUES($1, $2, $3, DEFAULT, $4, $5, $6, $7, $8, $9)
+		INSERT INTO users VALUES($1, $2, $3, DEFAULT, $4, $5, $6, $7::integer, $8, $9)
 		RETURNING "User Unique ID";				                
 		EOF;
 
-	$response =	pg_query_params($db, $sql, array($ipaddress,$country,$time,$phone,$email,$passwords,$thirdpartyid,$logintype,$appId));
+	$response =	pg_query_params($db, $sql, array($ipaddress, $country, $time, $phone, $email, $passwords, $thirdpartyid, $logintype, $appId));
 	if ($arr = pg_fetch_assoc($response))
 		$userId = $arr['User Unique ID'];
+	else
+		$userId = NULL;
 
 	if (!$userId) {
 		error_log("Error in pg_query_params()!\n");
 		die();
 	}
-	return json_encode($userId);
+	send_greetings($ipaddress, $country, $appId);
+
+	$jsonResponse = array("userId" => $userId);
+
+	return json_encode($jsonResponse);
 }
+
+echo InstallUserInfo($data, $db);

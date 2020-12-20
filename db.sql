@@ -10,7 +10,7 @@ CREATE TABLE "users" (
   "Store Country" Varchar(50),
   "Visit Time" timestamp,
   "User Unique ID" SERIAL,
-  "Phone Number" Integer,
+  "Phone Number" Varchar(50),
   "Email" Varchar(50),
   "Passwords" Varchar(50),
   "3rd Party User Id" Integer,
