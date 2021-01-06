@@ -6,7 +6,8 @@
  * Long description for class (if any)...
  *
  */
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 require_once('../Util/bootstrap.php');
 
 header('Content-Type: application/json');
@@ -54,8 +55,9 @@ Send email to the user with the confirmation link for that user
 
 */
 
-require_once("/var/www/html/php/util.php");
+require_once("/var/www/html/php/Util/util.php");
 require_once("/var/www/db.php");
+require_once("/var/www/html/php/Util/PHPMailer/PHPMailerAutoload.php");
 header('Access-Control-Allow-Origin: *');
 
 $json = file_get_contents('php://input');
@@ -132,20 +134,35 @@ if(strlen($passwords) < 8)
 }
 
 $hashed_pwd = hash("sha256", $passwords);
+$code = substr(md5(mt_rand()),0,15);
 
 $sql = <<<EOF
-INSERT INTO users VALUES($1, $2, $3, DEFAULT, $4, $5, $6, $7::integer, $8, $9)
+INSERT INTO users VALUES($1, $2, $3, DEFAULT, $4, $5, $6, $7::integer, $8, $9, $10)
 RETURNING "User Unique ID";				                
 EOF;
 
-$response =	pg_query_params($db, $sql, array($ipaddress, $country, $time, $phone, $email, $hashed_pwd, $thirdpartyid, $logintype, $appId));
+$response =	pg_query_params($db, $sql, array($ipaddress, $country, $time, $phone, $email, $hashed_pwd, $thirdpartyid, $logintype, $appId, $code));
 if ($arr = pg_fetch_assoc($response))
     $userId = $arr['User Unique ID'];
 else
     $userId = NULL;
 
 var_dump($_POST);
-$code = substr(md5(mt_rand()),0,15);
 $to = $email;
 $message = 'Your Activation Code is '.$code.' Please Click On This link <a href="verification.php">Verify.php?email='.$email.'&code='.$code.'</a>to activate your account.'; // Try this link https://www.columbus.co.za/files/Apr_12_AK_Reg_and_Conf1_FINAL.pdf
+
+$mail = new PHPMailer(true);
+$mail->isSMTP();
+$mail->Host = 'smtp.googlemail.com';
+$mail->SMTPAuth = true;
+$mail->Username = 'takitaki228';
+$mail->Password = 'password';
+$mail->SMTPSecure = 'ssl';
+$mail->Port = 465;
+$mail->SetFrom('takitaki228@gmail.com', 'Taki');
+$mail->addAddress($email);
+$mail->isHTML(true);
+$mail->Subject = 'Activation Code';
+$mail->Body = $message;
+$mail->send();
 mail($email, $message, NULL, $pwd); // https://stackoverflow.com/questions/3794959/easiest-way-for-php-email-verification-link
